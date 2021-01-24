@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 
 export default function App() {
-  const [todos,setTodos] = React.useState([]);
+  const [todos,setTodos] = React.useState([...JSON.parse(localStorage.getItem('todos'))] ?? []);
   const [inputTodo,setInputTodo] = React.useState('');
   function createNewTodo(){
     if(inputTodo.trim() !== ''){
@@ -13,8 +13,11 @@ export default function App() {
         complete: false,
         selected: false
       };
-      setTodos([todo,...todos]);
-      console.log(todos)
+      let newTodos = [todo,...todos]
+      setTodos(newTodos);
+      
+      localStorage.setItem('todos',JSON.stringify(newTodos));
+      console.log(todos);
       setInputTodo('');
     
     }
@@ -38,10 +41,21 @@ export default function App() {
     )
   }
   function markComplete(){
-    setTodos(todos.map((todo) => {if(todo.selected) if(todo.complete) todo.complete = false; else todo.complete=true; return todo;}))
+    let newTodos = todos.map((todo) => {
+      if(todo.selected) 
+        if(todo.complete) 
+          todo.complete = false; 
+        else 
+          todo.complete=true;
+      todo.selected = false;
+      return todo;});
+    setTodos(newTodos)
+    localStorage.setItem('todos',JSON.stringify(newTodos));
   }
   function deleteTodo(){
-    setTodos(todos.filter((todo) => !todo.selected));
+    let newTodos = todos.filter((todo) => !todo.selected);
+    setTodos(newTodos);
+    localStorage.setItem('todos',JSON.stringify(newTodos));
   }
   return (
     <>
@@ -60,9 +74,9 @@ export default function App() {
       </div>
       <div className='todos-container'>
         {todos.map((todo,index)=>
-        <div className="todo-container">
+        <div className="todo-container" key={index}>
           <input type="checkbox" checked={todo.selected} value={index} onChange={selectTodo}/>
-          <p className={todo.complete?'complete':''}>{todo.content}<br/><span className="todo-date">{todo.date.toLocaleDateString()}</span></p>
+          <p className={todo.complete?'complete':''}>{todo.content}<br/><span className="todo-date">{new Date(todo.date).toLocaleDateString()}</span></p>
         </div>)}
       </div>
     </>
