@@ -49,13 +49,15 @@ export default function App() {
           todo.complete=true;
       todo.selected = false;
       return todo;});
-    setTodos(newTodos)
+    setTodos(newTodos);
     localStorage.setItem('todos',JSON.stringify(newTodos));
+    document.querySelector('#select-all-checkbox').checked = false;
   }
   function deleteTodo(){
     let newTodos = todos.filter((todo) => !todo.selected);
     setTodos(newTodos);
     localStorage.setItem('todos',JSON.stringify(newTodos));
+    document.querySelector('#select-all-checkbox').checked = false;
   }
   return (
     <>
@@ -66,7 +68,7 @@ export default function App() {
         <input type="button" value="ADD TODO" className="btn add-todo" onClick={_ => createNewTodo()}/>
       </div>
       <div className="update-todo-container">
-        <input type="checkbox" onChange={selectAllTodos}/>
+        <input type="checkbox" onChange={selectAllTodos} id='select-all-checkbox'/>
         <span>{getSelectedTodoCount()} Selected</span>
         <input type='button' className='btn mark-complete' onClick={_ => markComplete()} value="Mark Complete"/>
         <input type='button' className='btn delete' onClick={_ => deleteTodo()} value="Delete"/>
