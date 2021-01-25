@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 
 export default function App() {
-  const [todos,setTodos] = React.useState([...JSON.parse(localStorage.getItem('todos'))] ?? []);
+  const [todos,setTodos] = React.useState(JSON.parse(localStorage.getItem('todos')) ?? []);
   const [inputTodo,setInputTodo] = React.useState('');
   function createNewTodo(){
     if(inputTodo.trim() !== ''){
