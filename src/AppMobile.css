@@ -1,0 +1,18 @@
+h1{
+  font-size:1.5rem
+}
+.input-container{
+  margin-left:10px;
+  margin-right:10px;
+}
+.update-todo-container{
+  margin-left:193px;
+  margin-right:20px;
+}
+.update-todo-container span{
+
+  font-size:0.8rem;
+}
+.todo-container{
+  width:350px !important;
+}
