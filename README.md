@@ -5,5 +5,5 @@
 * [x] - List saved todos 
 * [x] - Create header
 * [ ] - Create dark mode switch
-* [x] - Create a function to handle styles on switched
+* [ ] - Create a function to handle styles on switched
 * [x] - Add todos to local storage
