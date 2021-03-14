@@ -3,7 +3,7 @@
 * [x] - create-react-app
 * [x] - Add input and add todo button
 * [x] - List saved todos 
-* [ ] - Create header
+* [x] - Create header
 * [ ] - Create dark mode switch
-* [ ] - Create a function to handle styles on switched
-* [ ] - If possible add todos to local storage
+* [x] - Create a function to handle styles on switched
+* [x] - Add todos to local storage
