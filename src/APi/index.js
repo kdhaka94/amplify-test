@@ -2,10 +2,7 @@ import axios from 'axios';
 import React from 'react';
 import CustomComment from './Comment';
 
-export default function ApiExample() {
-  
-
-  console.log({ data });
+export default function ApiExample({ data }) {
   return (
     <div>
       {data.map((comment) => (

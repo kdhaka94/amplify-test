@@ -1,7 +1,7 @@
 import React from 'react';
 import ApiExample from './APi';
 import './App.css';
-
+import axios from 'axios';
 export default function App() {
   const [todos, setTodos] = React.useState(
     JSON.parse(localStorage.getItem('todos')) ?? []
@@ -72,7 +72,7 @@ export default function App() {
   }
   return (
     <>
-      <ApiExample />
+      <ApiExample data={data} />
       {/* <h1>Todo App</h1>
       <div className="sticky">
         <div className="input-container">
