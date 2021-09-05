@@ -9,6 +9,7 @@ function AmplifyAuth() {
       <header>
         <img src={logo} className="App-logo" alt="logo" />
         <h1>We now have Auth!</h1>
+        <h1>And it looks great!</h1>
       </header>
       <AmplifySignOut />
     </div>
